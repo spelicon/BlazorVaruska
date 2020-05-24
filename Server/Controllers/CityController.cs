@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlazorVaruska.Server.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CityController : ControllerBase
@@ -26,9 +26,9 @@ namespace BlazorVaruska.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<City>> Get()
+        public async Task<IList<City>> Get()
         {
-            return await context.City.ToArrayAsync();
+            return await context.City.ToListAsync();
         }
     }
 }

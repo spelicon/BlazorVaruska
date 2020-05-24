@@ -42,6 +42,9 @@ namespace BlazorVaruska.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
+            services.AddControllers()
+            .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -68,9 +71,9 @@ namespace BlazorVaruska.Server
 
             app.UseRouting();
 
-            app.UseIdentityServer();
-            app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseIdentityServer();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

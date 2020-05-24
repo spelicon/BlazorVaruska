@@ -6,6 +6,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
+using System.IO;
+using Microsoft.Extensions.Configuration;
+using BlazorVaruska.Shared;
+using System.Text.Json;
+using System.Collections.Generic;
 
 namespace XUnitIntegrationTest
 {
@@ -16,13 +21,15 @@ namespace XUnitIntegrationTest
         {
             var hostBuilder = new HostBuilder().ConfigureWebHost(webHost =>
             {
+                webHost.ConfigureAppConfiguration(config =>
+                {
+                    config.AddJsonFile("appsettings.json", optional: true);
+                });
                 // Add TestServer
                 webHost.UseTestServer();
 
+                webHost.UseStartup<BlazorVaruska.Server.Startup>();
                 // Specify the environment
-                webHost.UseEnvironment("Test");
-
-                webHost.Configure(app => app.Run(async ctx => await ctx.Response.WriteAsync("Hello World!")));
             });
 
             // Create and start up the host
@@ -32,10 +39,12 @@ namespace XUnitIntegrationTest
             var client = host.GetTestClient();
 
             // Act
-            var response = await client.GetAsync("/");
+            var response = await client.GetAsync("/city");
 
             // Assert
             var responseString = await response.Content.ReadAsStringAsync();
+            var obj = JsonSerializer.Deserialize(responseString, typeof(List<City>));
+            response.EnsureSuccessStatusCode();
             //responseString.Should().Be("Hello World!");
         }
     }
