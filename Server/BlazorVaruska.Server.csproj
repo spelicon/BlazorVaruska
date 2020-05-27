@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>BlazorVaruska.Server-BBCF4480-FC73-486A-A2D2-7A5CC76588B9</UserSecretsId>
+    <UserSecretsId>BlazorVaruska.Server-0D5C379C-8EF4-4A77-9919-7F97FA64F0FE</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

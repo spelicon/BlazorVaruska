@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlazorVaruska.Server.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CityController : ControllerBase
