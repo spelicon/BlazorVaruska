@@ -20,5 +20,6 @@ namespace BlazorVaruska.Server.Data
         }
 
         public DbSet<City> City { get; set; }
+        public DbSet<Varuska> Varuska { get; set; }
     }
 }

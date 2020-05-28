@@ -1,7 +1,87 @@
 ﻿@page "/"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using BlazorVaruska.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@using MatBlazor
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+@if (varuske == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    @foreach (var varuska in varuske)
+    {
+        <MatCard class="demo-mat-card">
+            <MatCardContent>
+                <MatCardMedia Wide="true" ImageUrl="https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg"></MatCardMedia>
+                <div class="demo-mat-card-content">
+                    <MatHeadline6 class="demo-mat-card-clean-margin">
+                        @varuska.Description
+                    </MatHeadline6>
+                    <MatSubtitle2 class="demo-mat-card-clean-margin">
+                        @varuska.Name
+                    </MatSubtitle2>
+
+                </div>
+            </MatCardContent>
+        </MatCard>
+        <MatButton OnClick="@OpenEditDialog" Raised="true">Pick one</MatButton>
+
+    }
+}
+
+<VaruskaDetail DialogIsOpen=@dialogIsOpen>
+</VaruskaDetail>
+
+@code {
+    private Varuska[] varuske;
+    bool dialogIsOpen = false;
+    Varuska varuskaObject = new Varuska();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            varuske = await Http.GetFromJsonAsync<Varuska[]>("Varuska");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+    }
+
+    private void PrepareForEdit(Varuska varuska)
+    {
+        varuskaObject = varuska;
+    }
+    void OpenEditDialog()
+    {
+        dialogIsOpen = true;
+    }
+
+
+}
+
+<style>
+    .demo-mat-card {
+        max-width: 400px;
+    }
+
+    .demo-mat-card-content {
+        padding: 1rem;
+    }
+
+    .demo-mat-card-clean-margin {
+        margin: 0px;
+    }
+</style>

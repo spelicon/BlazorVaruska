@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using BlazorVaruska.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@using MatBlazor
+
+<MatDialog @bind-IsOpen="@DialogIsOpen">
+    <MatDialogTitle>Hi @VaruskaObject.Name</MatDialogTitle>
+    <MatDialogContent>
+        <p>What's your favorite animal?</p>
+        <MatTextField @bind-Value="@VaruskaObject.Name"></MatTextField>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton OnClick="@(e => { DialogIsOpen = false; })">No Thanks</MatButton>
+        <MatButton OnClick="@OkClick">OK</MatButton>
+    </MatDialogActions>
+</MatDialog>
+
+@code {
+    [Parameter]
+    public Varuska VaruskaObject { get; set; }
+    [Parameter]
+    public bool DialogIsOpen { get; set; }
+
+    private async void HandleValidSubmit()
+    {
+        if (VaruskaObject.Id == 0)
+        {
+            await Http.PostAsJsonAsync<Varuska>("varuska", VaruskaObject);
+        }
+        else
+        {
+            await Http.PutAsJsonAsync<Varuska>("varuska", VaruskaObject);
+        }
+        //await CloseTaskModal();
+    }
+
+    void OkClick()
+    {
+        DialogIsOpen = false;
+    }
+
+}

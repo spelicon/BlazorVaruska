@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.128
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorVaruska.Server", "Server\BlazorVaruska.Server.csproj", "{D1B3CEB0-FEAF-4863-BB21-89EC62E6A72D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorVaruska.Server", "Server\BlazorVaruska.Server.csproj", "{D1B3CEB0-FEAF-4863-BB21-89EC62E6A72D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorVaruska.Client", "Client\BlazorVaruska.Client.csproj", "{7C0103B9-B5A2-43DA-A8AC-6207E283715A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorVaruska.Client", "Client\BlazorVaruska.Client.csproj", "{7C0103B9-B5A2-43DA-A8AC-6207E283715A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorVaruska.Shared", "Shared\BlazorVaruska.Shared.csproj", "{D427E712-FE8B-41B7-A9E5-AB6546C109EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorVaruska.Shared", "Shared\BlazorVaruska.Shared.csproj", "{D427E712-FE8B-41B7-A9E5-AB6546C109EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
