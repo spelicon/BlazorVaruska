@@ -35,12 +35,12 @@ else
                 </div>
             </MatCardContent>
         </MatCard>
-        <MatButton OnClick="@OpenEditDialog" Raised="true">Pick one</MatButton>
+        <MatButton OnClick="(()=>OpenEditDialog(varuska))" Raised="true">Pick one</MatButton>
 
     }
 }
 
-<VaruskaDetail DialogIsOpen=@dialogIsOpen>
+<VaruskaDetail DialogIsOpen=@dialogIsOpen VaruskaObject=@varuskaObject>
 </VaruskaDetail>
 
 @code {
@@ -60,13 +60,11 @@ else
         }
     }
 
-    private void PrepareForEdit(Varuska varuska)
-    {
-        varuskaObject = varuska;
-    }
-    void OpenEditDialog()
+
+    void OpenEditDialog(Varuska varuska)
     {
         dialogIsOpen = true;
+        varuskaObject = varuska;
     }
 
 

@@ -8,12 +8,11 @@
 <MatDialog @bind-IsOpen="@DialogIsOpen">
     <MatDialogTitle>Hi @VaruskaObject.Name</MatDialogTitle>
     <MatDialogContent>
-        <p>What's your favorite animal?</p>
+        <p>Ime</p>
         <MatTextField @bind-Value="@VaruskaObject.Name"></MatTextField>
     </MatDialogContent>
     <MatDialogActions>
-        <MatButton OnClick="@(e => { DialogIsOpen = false; })">No Thanks</MatButton>
-        <MatButton OnClick="@OkClick">OK</MatButton>
+         <MatButton OnClick="@OkClick">Vredu</MatButton>
     </MatDialogActions>
 </MatDialog>
 
