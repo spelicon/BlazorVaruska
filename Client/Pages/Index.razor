@@ -21,21 +21,27 @@ else
 
     @foreach (var varuska in varuske)
     {
-        <MatCard class="demo-mat-card">
-            <MatCardContent>
-                <MatCardMedia Wide="true" ImageUrl="https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg"></MatCardMedia>
-                <div class="demo-mat-card-content">
-                    <MatHeadline6 class="demo-mat-card-clean-margin">
-                        @varuska.Description
-                    </MatHeadline6>
-                    <MatSubtitle2 class="demo-mat-card-clean-margin">
-                        @varuska.Name
-                    </MatSubtitle2>
+<MatCard class="demo-mat-card">
+    <MatCardContent>
+        <MatCardMedia Wide="true" ImageUrl="https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg"></MatCardMedia>
+        <div class="demo-mat-card-content">
+            <MatHeadline6 class="demo-mat-card-clean-margin">
+                @varuska.Name
+            </MatHeadline6>
+            <MatSubtitle2 class="demo-mat-card-clean-margin">
+                @varuska.Description
+            </MatSubtitle2>
+        </div>
+    </MatCardContent>
+    <MatCardActions>
+        <MatCardActionButtons>
+            <MatButton OnClick="(()=>OpenEditDialog(varuska))" Raised="true">Več</MatButton>
+        </MatCardActionButtons>
 
-                </div>
-            </MatCardContent>
-        </MatCard>
-        <MatButton OnClick="(()=>OpenEditDialog(varuska))" Raised="true">Pick one</MatButton>
+    </MatCardActions>
+</MatCard>
+       
+      
 
     }
 }

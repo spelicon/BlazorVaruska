@@ -33,29 +33,29 @@ namespace BlazorVaruska.Server.Controllers
 
 
         [HttpPost]
-        public async Task<Varuska> Add(Varuska varuska)
+        public async Task<IActionResult> Add(Varuska varuska)
         {
-            context.Varuska.Add(varuska);
+            context.Add(varuska);
             await context.SaveChangesAsync();
-            return varuska;
+            return Ok(varuska.Id);
         }
 
 
         [HttpPut]
-        public async Task<Varuska> Update(Varuska varuska)
+        public async Task<IActionResult> Update(Varuska varuska)
         {
             context.Entry(varuska).State = EntityState.Modified;
             await context.SaveChangesAsync();
-            return varuska;
+            return NoContent(); 
         }
 
         [HttpDelete]
-        public async Task<Varuska> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var toDo = await context.Varuska.FindAsync(id);
             context.Varuska.Remove(toDo);
             await context.SaveChangesAsync();
-            return toDo;
+            return NoContent();
         }
     }
 }
